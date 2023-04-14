@@ -12,14 +12,46 @@ public class Ball : MonoBehaviour
 
     Vector3 targetLocation;
 
+    Rigidbody rb;
+
+    bool isBouncing;
+
     // Update is called once per frame
-    void Update()
+
+    private void OnCollisionEnter(Collision other) 
+    {
+        Debug.Log("collision happened");
+        Debug.Log("velocity1: " + velocity);
+        if (!isBouncing)
+        {
+            for (int i = 0; i<2; i++)
+            {
+                if (other.contacts[0].normal[i] != 0f)
+                {
+                    velocity[i] *= -bounciness;
+                    isBouncing = true;
+                    Debug.Log("velocity2: " + velocity);
+                }
+            }
+        }
+    }
+    private void OnCollisionExit(Collision other)
+    {
+        isBouncing = false;
+    }
+
+    
+    private void Start() 
+    {
+        rb = GetComponent<Rigidbody>();
+    }
+    void FixedUpdate()
     {
 
 
         if(transform.position.y <= 0.05f && velocity.y < 0f)
         {
-            velocity.y *= -bounciness; 
+            //velocity.y *= -bounciness; 
         }
         else
         {
@@ -30,7 +62,7 @@ public class Ball : MonoBehaviour
             velocity.y = 0f;
         }
 
-        transform.Translate(velocity * Time.deltaTime);
+        rb.MovePosition(transform.position + (velocity * Time.deltaTime));
     }  
 
     void OnEnable() 
