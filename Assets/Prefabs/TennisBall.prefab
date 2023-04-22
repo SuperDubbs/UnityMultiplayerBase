@@ -121,6 +121,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gravity: -19.62
   bounciness: 0.8
+  drag: 0.025
 --- !u!54 &-297024478798468766
 Rigidbody:
   m_ObjectHideFlags: 0
