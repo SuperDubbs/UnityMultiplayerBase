@@ -707,10 +707,10 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 2
   windowsGamepadBackendHint: 0
-  cloudProjectId: a95c6607-7f06-4f87-8b6b-8f61d2656301
+  cloudProjectId: 62cef0bd-08c9-4b74-b93c-d90e365110b4
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: NetworkingTest
+  projectName: NetworkingTest (1)
   organizationId: kaydsidloski
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0

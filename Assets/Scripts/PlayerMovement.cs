@@ -130,7 +130,20 @@ public class PlayerMovement : NetworkBehaviour
     }
     void Serve()
     {
-        Instantiate(ball, ballSpawn.position, Quaternion.identity);
+        SpawnBallServerRpc();
+    }
+
+    [ServerRpc]
+    private void SpawnBallServerRpc()
+    {
+        SpawnBallClientRpc();
+    }
+
+    [ClientRpc]
+    private void SpawnBallClientRpc()
+    {
+        GameObject spawnedBall = Instantiate(ball, ballSpawn.position, Quaternion.identity);
+        spawnedBall.GetComponent<NetworkObject>().Spawn(true);
     }
 
 
